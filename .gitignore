@@ -29,3 +29,9 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# MacOS files
+.DS_Store
+
+# Environment
+.env
