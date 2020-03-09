@@ -14,8 +14,9 @@ class Book < ApplicationRecord
   validates :isbn,
     presence: true,
     uniqueness: true,
-    numericality: true,
-    length: { in: [10, 13] }
+    numericality: true
+
+  validate :isbn_length
 
   validates :publish_date_before_type_cast,
     format: {
@@ -28,4 +29,14 @@ class Book < ApplicationRecord
       schemes: ["https", "http"],
       allow_blank: true
     }
+
+  validates :status, presence: true
+
+  private
+
+    def isbn_length
+      unless [10, 13].include?(isbn&.size)
+        errors.add(:isbn, "length must be 10 or 13")
+      end
+    end
 end
