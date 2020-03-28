@@ -3,6 +3,9 @@
 class Book < ApplicationRecord
   has_many :book_rent_history_items, dependent: :restrict_with_error
 
+  has_many :collection_books, dependent: :restrict_with_error
+  has_many :collections, through: :collection_books
+
   enum status: {
     unreaded: 0,
     wanted: 10,

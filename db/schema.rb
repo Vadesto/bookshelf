@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_28_181519) do
+ActiveRecord::Schema.define(version: 2020_03_28_190946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(version: 2020_03_28_181519) do
     t.index ["isbn"], name: "index_books_on_isbn", unique: true
   end
 
+  create_table "collection_books", force: :cascade do |t|
+    t.bigint "collection_id", null: false
+    t.bigint "book_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_collection_books_on_book_id"
+    t.index ["collection_id"], name: "index_collection_books_on_collection_id"
+  end
+
   create_table "collections", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -53,4 +62,6 @@ ActiveRecord::Schema.define(version: 2020_03_28_181519) do
   end
 
   add_foreign_key "book_rent_history_items", "books"
+  add_foreign_key "collection_books", "books"
+  add_foreign_key "collection_books", "collections"
 end
