@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Book < ApplicationRecord
+  has_many :book_rent_history_items, dependent: :restrict_with_error
+
   enum status: {
     unreaded: 0,
     wanted: 10,
