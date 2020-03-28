@@ -6,6 +6,9 @@ class Book < ApplicationRecord
   has_many :collection_books, dependent: :restrict_with_error
   has_many :collections, through: :collection_books
 
+  has_many :author_books, dependent: :restrict_with_error
+  has_many :authors, through: :author_books
+
   enum status: {
     unreaded: 0,
     wanted: 10,
