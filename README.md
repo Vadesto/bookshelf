@@ -1,24 +1,39 @@
-# README
+# Bookshelf
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Bookshelf is an application for conveniently sorting and tracking books from your home library. Books can be added to the database using ISBN or manually, and later be assigned to the collections.
 
-Things you may want to cover:
+When adding a book to the database, you can see a short description of the book, its author(s), cover and short description.
 
-* Ruby version
+You can easily see all the books by one author or all the books in the collection.
 
-* System dependencies
+Bookshelf has a “borrowing history” for conveniently tracking your book: to whom, when, and by which date the book was put into use.
 
-* Configuration
+Bookshelf will support three languages: Simplified Chinese, Russian and English.
 
-* Database creation
+## Requirements
 
-* Database initialization
+* Ruby 2.7.0
 
-* How to run the test suite
+* Docker with compose
 
-* Services (job queues, cache servers, search engines, etc.)
+* PostgreSQL
 
-* Deployment instructions
+## Configuration
 
-* ...
+For local development copy `.env.example` to `.env`
+
+## Database
+
+`rails db:create` to create empty database
+
+`rails db:migrate` to run migrations
+
+## Local development
+
+`docker-compose up`
+
+`foreman start`
+
+## How to create an Entity-Relationship Diagram
+
+`EAGER_LOAD=1 rails erd`
