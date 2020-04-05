@@ -4,7 +4,7 @@
     <div class="card-body">
       <h4 class="card-title"><%= book.title %></h4>
       <% if book.description.present? %>
-        <p class="card-text"><%= book.description %></p>
+        <p class="card-text"><%= book.description.truncate(80) %></p>
       <% end %>
     </div>
     <div class="card-footer">
