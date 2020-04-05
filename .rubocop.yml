@@ -20,6 +20,7 @@ AllCops:
     - 'actiontext/test/dummy/**/*'
     - '**/node_modules/**/*'
     - 'db/schema.rb'
+    - '**/*.erb'
 
 Performance:
   Exclude:
