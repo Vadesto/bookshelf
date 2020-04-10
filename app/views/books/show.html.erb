@@ -1,4 +1,37 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="card mb-2">
+        <%= image_tag @book.cover || "no-cover.png", class: "card-img-top" %>
+        <div class="card-body">
+          <p class="card-text">ISBN: <%= @book.isbn %></p>
+          <p class="card-text">Publish date: <%= @book.publish_date || "N/A" %></p>
+        </div>
+      </div>
+      <%= link_to "Edit", edit_book_path(@book), class: "btn btn-secondary btn-lg btn-block" %>
+      <%= link_to "Destroy", @book, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-lg btn-block" %>
+    </div>
+
+    <div class="col-lg-9">
+      <h1><%= @book.title %></h1>
+      <p>
+        Written by:
+        <% @book.authors.each do |author| %>
+          <span><%= author.name %></span>
+        <% end %>
+      </p>
+
+      <p>
+        Collections:
+        <% @book.collections.each do |collection| %>
+          <span><%= collection.name %></span>
+        <% end %>
+      </p>
+
+      <p>Description:</p>
+      <p><%= @book.description %></p>
+    </div>
+  </div>
+</div>
