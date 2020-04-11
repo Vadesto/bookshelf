@@ -10,6 +10,19 @@ class BooksController < ApplicationController
 
   # GET /books/1
   def show
+    @books_from_same_collections = Book
+                                   .left_outer_joins(:collection_books)
+                                   .where(collection_books: { collection: @book.collections })
+                                   .where.not(id: @book.id)
+                                   .distinct
+                                   .limit(6)
+
+    @books_from_same_authors = Book
+                               .left_outer_joins(:author_books)
+                               .where(author_books: { author: @book.authors })
+                               .where.not(id: @book.id)
+                               .distinct
+                               .limit(6)
   end
 
   # GET /books/new
