@@ -3,5 +3,9 @@
 Rails.application.routes.draw do
   root to: "home#index"
 
-  resources :books
+  concern :paginatable do
+    get "(page/:page)", action: :index, on: :collection, as: ""
+  end
+
+  resources :books, concerns: :paginatable
 end
