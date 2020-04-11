@@ -2,7 +2,7 @@
   <div class="card bg-dark text-white">
     <%= image_tag book.cover || "no-cover.png", class: "card-img" %>
     <div class="card-img-overlay card-img-overlay-dark">
-      <p class="card-title"><%= book.title %></p>
+      <%= link_to book.title, book_path(book), class: "card-title stretched-link text-white" %>
     </div>
   </div>
 </div>
