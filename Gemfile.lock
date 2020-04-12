@@ -63,6 +63,9 @@ GEM
     bootstrap4-kaminari-views (1.0.1)
       kaminari (>= 0.13)
       rails (>= 3.1)
+    bootstrap_form (4.4.0)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
     builder (3.2.4)
     byebug (11.1.1)
     choice (0.2.0)
@@ -232,6 +235,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.4.2)
   bootstrap4-kaminari-views
+  bootstrap_form (~> 4.0)
   byebug
   dotenv-rails
   jbuilder (~> 2.7)
