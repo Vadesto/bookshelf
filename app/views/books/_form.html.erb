@@ -1,17 +1,10 @@
-<%= form_with(model: book, local: true) do |form| %>
-  <% if book.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
-
-      <ul>
-        <% book.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<%= bootstrap_form_with(model: book, local: true) do |f| %>
+  <%= f.url_field :cover, placeholder: "Put an URL here" %>
+  <%= f.text_field :title %>
+  <%= f.text_field :isbn, placeholder: "ISBN should be 10 or 13 digits long"%>
+  <%= f.select :status, [["Undread", :unreaded], ["Wanted", :wanted], ["Reading", :reading], ["Read", :read], ["Delayed", :delayed]],
+              { label: "Book status:"},
+              { class: "selectpicker" } %>
+  <%= f.text_area :description, placeholder: "Put a short description of a book here" %>
+  <%= f.submit "Commit",class: "btn btn-success" %>
 <% end %>
