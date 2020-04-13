@@ -1,4 +1,58 @@
-<p id="notice"><%= notice %></p>
+<div class="row mb-5">
+  <div class="col-lg-3">
+    <div class="card mb-2">
+      <%= image_tag @book.cover || "no-cover.png", class: "card-img-top" %>
+      <div class="card-body">
+        <p class="card-text">ISBN: <%= @book.isbn %></p>
+        <p class="card-text">Publish date: <%= @book.publish_date || "N/A" %></p>
+        <p class="card-text">Status: <%= @book.status %></p>
+      </div>
+    </div>
+    <%= link_to "Edit", edit_book_path(@book), class: "btn btn-secondary btn-lg btn-block" %>
+    <%= link_to "Destroy", @book, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-lg btn-block" %>
+  </div>
 
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+  <div class="col-lg-9">
+    <h1><%= @book.title %></h1>
+    <p>
+      Written by:
+      <% @book.authors.each do |author| %>
+        <span><%= author.name %></span>
+      <% end %>
+    </p>
+
+    <p>
+      Collections:
+      <% @book.collections.each do |collection| %>
+        <span><%= collection.name %></span>
+      <% end %>
+    </p>
+
+    <p>Description:</p>
+    <p><%= @book.description %></p>
+  </div>
+</div>
+
+<% if @books_from_same_collections.any? %>
+  <h3>
+    Find more books from this collection(s):
+  </h3>
+
+  <div class="row mb-3">
+    <% @books_from_same_collections.each do |book| %>
+      <%= render partial: "/shared/book_card_small", locals: { book: book } %>
+    <% end %>
+  </div>
+<% end %>
+
+<% if @books_from_same_authors.any? %>
+  <h3>
+    Find more books from this Author(s):
+  </h3>
+
+  <div class="row">
+    <% @books_from_same_authors.each do |book| %>
+      <%= render partial: "/shared/book_card_small", locals: { book: book } %>
+    <% end %>
+  </div>
+<% end %>
