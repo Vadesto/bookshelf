@@ -33,7 +33,7 @@
   </div>
 </div>
 
-<% if @book.collections.present? %>
+<% if @book.collections.any? %>
   <h3>
     Find more books from this collection(s):
   </h3>
@@ -47,7 +47,7 @@
   <h3> This book currently doesn't assigned to any collection(s) </h3>
 <% end %>
 
-<% if @book.authors.present? %>
+<% if @book.authors.any? %>
   <h3>
     Find more books from this Author(s):
   </h3>

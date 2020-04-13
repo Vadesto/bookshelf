@@ -1,10 +1,10 @@
 <%= bootstrap_form_with(model: book, local: true) do |f| %>
   <%= f.url_field :cover, placeholder: "Put an URL here" %>
   <%= f.text_field :title %>
-  <%= f.text_field :isbn, placeholder: "ISBN should be 10 or 13 digits long"%>
-  <%= f.select :status, [["Undread", :unreaded], ["Wanted", :wanted], ["Reading", :reading], ["Read", :read], ["Delayed", :delayed]],
+  <%= f.text_field :isbn, placeholder: "ISBN should be 10 or 13 digits long" %>
+  <%= f.select :status, [["Unread", :unreaded], ["Wanted", :wanted], ["Reading", :reading], ["Read", :read], ["Delayed", :delayed]],
               { label: "Book status:"},
               { class: "selectpicker" } %>
   <%= f.text_area :description, placeholder: "Put a short description of a book here" %>
-  <%= f.submit "Commit",class: "btn btn-success" %>
+  <%= f.submit "Commit", class: "btn btn-success" %>
 <% end %>
