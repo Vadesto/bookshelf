@@ -33,7 +33,7 @@
   </div>
 </div>
 
-<% if @book.collections.any? %>
+<% if @books_from_same_collections.any? %>
   <h3>
     Find more books from this collection(s):
   </h3>
@@ -47,7 +47,7 @@
   <h3> This book currently doesn't assigned to any collection(s) </h3>
 <% end %>
 
-<% if @book.authors.any? %>
+<% if @books_from_same_authors.any? %>
   <h3>
     Find more books from this Author(s):
   </h3>
@@ -57,6 +57,4 @@
       <%= render partial: "/shared/book_card_small", locals: { book: book } %>
     <% end %>
   </div>
-<% else %>
-  <h3> This book currently doesn't assigned to any author(s) </h3>
 <% end %>
