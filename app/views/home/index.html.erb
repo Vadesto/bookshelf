@@ -2,7 +2,7 @@
   <h1><%= collection.name %></h1>
 
   <div class="row">
-    <% collection.books.each do |book| %>
+    <% collection.five_books.each do |book| %>
       <%= render partial: "/shared/book_card", locals: { book: book } %>
     <% end %>
   </div>

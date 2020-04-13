@@ -9,6 +9,8 @@ class Book < ApplicationRecord
   has_many :author_books, dependent: :restrict_with_error
   has_many :authors, through: :author_books
 
+  scope :without_collection, -> { left_outer_joins(:collections).where(collections: { id: nil }).order(created_at: :desc) }
+
   enum status: {
     unreaded: 0,
     wanted: 10,
