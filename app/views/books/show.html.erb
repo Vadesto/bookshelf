@@ -43,8 +43,6 @@
       <%= render partial: "/shared/book_card_small", locals: { book: book } %>
     <% end %>
   </div>
-<% else %>
-  <h3> This book currently doesn't assigned to any collection(s) </h3>
 <% end %>
 
 <% if @books_from_same_authors.any? %>
