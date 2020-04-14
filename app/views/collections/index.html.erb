@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-12 d-flex align-items-center">
+    <h1>Collections</h1>
+    <%= link_to "Create new collection", new_collection_path(@collection), class: "btn btn-success btn-sm ml-auto" %>
+  </div>
+</div>
+
+<% @collections.each do |collection| %>
+  <h2><%= collection.name %></h2>
+
+  <div class="row">
+    <% collection.five_books.each do |book| %>
+      <%= render partial: "/shared/book_card_small", locals: { book: book } %>
+    <% end %>
+    <%= render partial: "/shared/link_card", locals: { link: collection_path(collection) } %>
+  </div>
+<% end %>
+
+<h2>Books without a collection</h2>
+
+<div class="row">
+  <% @books_without_collections.each do |book| %>
+    <%= render partial: "/shared/book_card_small", locals: { book: book } %>
+  <% end %>
+</div>

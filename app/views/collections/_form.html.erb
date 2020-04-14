@@ -1,0 +1,4 @@
+<%= bootstrap_form_with(model: collection, local: true) do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit "Commit", class: "btn btn-success" %>
+<% end %>

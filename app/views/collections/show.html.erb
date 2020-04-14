@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-md-12 d-flex align-items-center">
+    <h1>Books in collection <%= @collection.name %></h1>
+    <%= link_to "Edit", edit_collection_path(@collection), class: "btn btn-secondary btn-sm ml-auto" %>
+    <%= link_to "Destroy", @collection, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm ml-2" %>
+  </div>
+</div>
+
+<div class="row">
+  <% @books.each do |book| %>
+    <%= render partial: "/shared/book_card", locals: { book: book } %>
+  <% end %>
+</div>
+
+<div class="row">
+  <div class="col">
+    <%= paginate @books, theme: "twitter-bootstrap-4", window: 2 %>
+  </div>
+</div>

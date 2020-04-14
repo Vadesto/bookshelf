@@ -8,4 +8,8 @@ Rails.application.routes.draw do
   end
 
   resources :books, concerns: :paginatable
+
+  resources :collections do
+    get "page/:page", action: :show, on: :member
+  end
 end
