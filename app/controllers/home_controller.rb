@@ -3,7 +3,6 @@
 class HomeController < ApplicationController
   # GET /
   def index
-    @collections = Collection.joins(:books).distinct.order(name: :asc)
-    @books_without_collections = Book.without_collection.limit(4)
+    @last_books = Book.order(created_at: :desc).limit(11)
   end
 end

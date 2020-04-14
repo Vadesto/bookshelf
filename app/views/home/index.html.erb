@@ -1,17 +1,8 @@
-<% @collections.each do |collection| %>
-  <h1><%= collection.name %></h1>
-
-  <div class="row">
-    <% collection.five_books.each do |book| %>
-      <%= render partial: "/shared/book_card", locals: { book: book } %>
-    <% end %>
-  </div>
-<% end %>
-
-<h1>Books without a collection</h1>
+<h1>New books</h1>
 
 <div class="row">
-  <% @books_without_collections.each do |book| %>
-    <%= render partial: "/shared/book_card", locals: { book: book } %>
+  <% @last_books.each do |book| %>
+    <%= render partial: "/shared/book_card_small", locals: { book: book } %>
   <% end %>
+  <%= render partial: "/shared/link_card", locals: { link: books_path } %>
 </div>
