@@ -12,4 +12,8 @@ Rails.application.routes.draw do
   resources :collections do
     get "page/:page", action: :show, on: :member
   end
+
+  resources :authors do
+    get "page/:page", action: :show, on: :member
+  end
 end

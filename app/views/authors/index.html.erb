@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-12 d-flex align-items-center">
+    <h1>Authors</h1>
+    <%= link_to "New Author", new_author_path(@author), class: "btn btn-success btn-sm ml-auto" %>
+  </div>
+</div>
+
+<% @authors.each do |author| %>
+  <h2><%= author.name %></h2>
+
+  <div class="row">
+    <% author.five_books.each do |book| %>
+      <%= render partial: "/shared/book_card_small", locals: { book: book } %>
+    <% end %>
+    <%= render partial: "/shared/author_link_card", locals: { link: author_path(author), author: author.name } %>
+  </div>
+<% end %>
