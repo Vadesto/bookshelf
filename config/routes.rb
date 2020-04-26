@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   resources :books, concerns: :paginatable
 
+  resources :rentals, concerns: :paginatable, except: :show
+
   resources :collections do
     get "page/:page", action: :show, on: :member
   end

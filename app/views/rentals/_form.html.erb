@@ -1,0 +1,8 @@
+<%= bootstrap_form_with(model: rental, local: true, url: url) do |f| %>
+  <%= f.select :book_id, @books %>
+  <%= f.text_field :who %>
+  <%= f.date_field :since %>
+  <%= f.date_field :until %>
+  <%= f.text_area :comment, placeholder: "Put a short comment here" %>
+  <%= f.submit "Commit", class: "btn btn-success" %>
+<% end %>
