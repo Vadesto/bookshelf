@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RentalsController < ApplicationController
-  before_action :set_book_rent_history_item, only: [:edit, :update, :destroy]
+  before_action :set_book_rent_history_item, only: [:edit, :update, :destroy, :return]
 
   before_action :set_books, only: [:edit, :update, :new, :create]
 
@@ -45,6 +45,12 @@ class RentalsController < ApplicationController
     redirect_to rentals_path, notice: "Book rent history item was successfully destroyed."
   end
 
+  # POST rentals/1/return
+  def return
+    @book_rent_history_item.update!(status: "returned")
+    redirect_to rentals_path, notice: "Book has been returned."
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book_rent_history_item
@@ -53,7 +59,7 @@ class RentalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_rent_history_item_params
-      params.fetch(:book_rent_history_item, {}).permit(:book_id, :who, :since, :until, :comment)
+      params.fetch(:book_rent_history_item, {}).permit(:book_id, :who, :since, :until, :comment, :status)
     end
 
     def set_books
