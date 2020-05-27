@@ -12,6 +12,6 @@
     <% author.five_books.each do |book| %>
       <%= render partial: "/shared/book_card_small", locals: { book: book } %>
     <% end %>
-    <%= render partial: "/shared/author_link_card", locals: { link: author_path(author), author: author.name } %>
+    <%= render partial: "/shared/link_card", locals: { link: author_path(author)} %>
   </div>
 <% end %>

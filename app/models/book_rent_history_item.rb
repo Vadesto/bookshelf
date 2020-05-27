@@ -18,4 +18,9 @@ class BookRentHistoryItem < ApplicationRecord
     }
 
   validates :who, presence: true
+
+  enum status: {
+    not_returned: 0,
+    returned: 10
+  }
 end

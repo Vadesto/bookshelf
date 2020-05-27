@@ -1,0 +1,29 @@
+<div class="card mb-3">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <%= image_tag rental.book.cover || "no-cover.png", class: "card-img" %>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%= rental.book.title %></h5>
+        <p class="card-text">
+          <% if rental.status == "not_returned" %>
+            <span class="badge badge-danger">Not returned</span>
+          <% elsif rental.status == "returned" %>
+            <span class="badge badge-success">Returned</span>
+          <% end %>
+        </p>
+        <p class="card-text"><%= rental.comment %></p>
+        <p class="card-text"><small class="text-muted">Taken: <%= rental.until %></small></p>
+        <p class="card-text"><small class="text-muted">By: <%= rental.who %></small></p>
+        <p class="card-text"><small class="text-muted">Until: <%= rental.until || "unknown" %></small></p>
+        <p><%= button_to "Delete", rental_path(rental), method: :delete, class: "btn btn-danger btn-sm ml-auto" %></p>
+        <p>
+          <% if rental.status == "not_returned" %>
+            <%= button_to "Return", return_rental_path(rental), class: "btn btn-success btn-sm ml-auto" %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
