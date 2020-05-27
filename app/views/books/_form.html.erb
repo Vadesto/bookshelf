@@ -1,4 +1,4 @@
-<%= bootstrap_form_with(model: book, local: true, url: url) do |f| %>
+<%= bootstrap_form_with(model: book, local: true) do |f| %>
   <%= f.url_field :cover, placeholder: "Put an URL here" %>
   <%= f.text_field :title %>
   <%= f.text_field :isbn, placeholder: "ISBN should be 10 or 13 digits long" %>
