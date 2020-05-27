@@ -18,9 +18,11 @@
         <p class="card-text"><small class="text-muted">By: <%= rental.who %></small></p>
         <p class="card-text"><small class="text-muted">Until: <%= rental.until || "unknown" %></small></p>
         <p><%= button_to "Delete", rental_path(rental), method: :delete, class: "btn btn-danger btn-sm ml-auto" %></p>
-        <p><% if rental.status == "not_returned" %>
-          <%= button_to "Return", return_rental_path(rental), class: "btn btn-success btn-sm ml-auto" %>
-        <% end %></p>
+        <p>
+          <% if rental.status == "not_returned" %>
+            <%= button_to "Return", return_rental_path(rental), class: "btn btn-success btn-sm ml-auto" %>
+          <% end %>
+        </p>
       </div>
     </div>
   </div>
