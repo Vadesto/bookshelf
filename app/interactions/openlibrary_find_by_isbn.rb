@@ -33,7 +33,7 @@ class OpenlibraryFindByIsbn < ActiveInteraction::Base
       description: data[:subtitle],
       cover: data[:cover][:large],
       publish_date: data[:publish_date],
-      authors: data[:authors].map { |author| author[:name] }
+      authors: data[:authors]&.map { |author| author[:name] } || []
     }
   end
 
