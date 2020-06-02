@@ -2,7 +2,7 @@
 
 <div class="row">
   <% @last_authors.each do |author| %>
-  <%= render partial: "/shared/author_link_card", locals: {  author: author, link: author_path(author) } %>
+    <%= render partial: "/shared/author_link_card", locals: {  author: author, link: author_path(author) } %>
   <% end %>
   <%= render partial: "/shared/link_card", locals: { link: authors_path } %>
 </div>
