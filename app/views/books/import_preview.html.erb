@@ -1,0 +1,15 @@
+<div class="card mb-3">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <%= image_tag @book_data[:cover] || "no-cover.png", class: "card-img" %>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%= @book_data[:title] %></h5>
+        <p class="card-text"><%= @book_data[:description] %></p>
+        <p><small class="text-muted">Author(s): <%= @book_data[:authors].join(", ") %></small></p>
+        <p><small class="text-muted">Publish date: <%= @book_data[:publish_date] %></small></p>
+      </div>
+    </div>
+  </div>
+</div>
