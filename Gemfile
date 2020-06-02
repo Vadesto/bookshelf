@@ -40,6 +40,13 @@ gem "bootstrap4-kaminari-views"
 # bootstrap forms
 gem "bootstrap_form", "~> 4.0"
 
+# faraday
+gem "faraday"
+gem "faraday_middleware"
+
+# active_interactions
+gem "active_interaction", "~> 3.8"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

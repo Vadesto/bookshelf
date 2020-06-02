@@ -1,0 +1,6 @@
+<h1>Import by ISBN</h1>
+
+<%= bootstrap_form_with(url: import_preview_books_url, local: true) do |f| %>
+  <%= f.text_field :isbn, placeholder: "ISBN should be 10 or 13 digits long" %>
+  <%= f.submit "Find", class: "btn btn-success" %>
+<% end %>

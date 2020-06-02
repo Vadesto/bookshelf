@@ -1,7 +1,8 @@
 <div class="row">
   <div class="col-md-12 d-flex align-items-center">
     <h1>Books</h1>
-    <%= link_to "Add new book", new_book_path(@book), class: "btn btn-success btn-sm ml-auto" %>
+    <%= link_to "Add new book", new_book_path, class: "btn btn-success btn-sm ml-auto mr-1" %>
+    <%= link_to "Import by ISBN", import_by_isbn_books_path, class: "btn btn-success btn-sm" %>
   </div>
 </div>
 

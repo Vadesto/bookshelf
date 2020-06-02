@@ -1,3 +1,12 @@
+<h1>New authors</h1>
+
+<div class="row">
+  <% @last_authors.each do |author| %>
+    <%= render partial: "/shared/author_link_card", locals: {  author: author, link: author_path(author) } %>
+  <% end %>
+  <%= render partial: "/shared/link_card", locals: { link: authors_path } %>
+</div>
+
 <h1>New books</h1>
 
 <div class="row">
@@ -5,4 +14,18 @@
     <%= render partial: "/shared/book_card_small", locals: { book: book } %>
   <% end %>
   <%= render partial: "/shared/link_card", locals: { link: books_path } %>
+</div>
+
+<h1>Give these books another try!</h1>
+<div class="row">
+  <% @delayed_books.each do |book| %>
+    <%= render partial: "/shared/book_card_small", locals: { book: book } %>
+  <% end %>
+</div>
+
+<h1>Reading at the moment</h1>
+<div class="row">
+  <% @reading_books.each do |book| %>
+    <%= render partial: "/shared/book_card_small", locals: { book: book } %>
+  <% end %>
 </div>

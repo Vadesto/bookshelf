@@ -64,6 +64,25 @@ class BooksController < ApplicationController
     redirect_to books_url, notice: "Book was successfully destroyed."
   end
 
+  # GET /books/import_by_isbn
+  def import_by_isbn
+  end
+
+  # POST /books/import_preview
+  def import_preview
+    book = OpenlibraryFindByIsbn.run(isbn: import_params[:isbn])
+
+    unless book.valid?
+      return redirect_to import_by_isbn_books_url, flash: { error: "Invalid ISBN" }
+    end
+
+    @book_data = book.result
+
+    if @book_data.blank?
+      redirect_to import_by_isbn_books_url, flash: { error: "Sorry, we couldn't find this book" }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book
@@ -73,5 +92,10 @@ class BooksController < ApplicationController
     # Only allow a list of trusted parameters through.
     def book_params
       params.fetch(:book, {}).permit(:title, :isbn, :image, :status, :cover)
+    end
+
+    # Only allow ISBN param
+    def import_params
+      params.permit(:isbn)
     end
 end

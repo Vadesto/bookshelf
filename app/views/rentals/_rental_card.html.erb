@@ -14,13 +14,15 @@
           <% end %>
         </p>
         <p class="card-text"><%= rental.comment %></p>
-        <p class="card-text"><small class="text-muted">Taken: <%= rental.until %></small></p>
-        <p class="card-text"><small class="text-muted">By: <%= rental.who %></small></p>
-        <p class="card-text"><small class="text-muted">Until: <%= rental.until || "unknown" %></small></p>
-        <p><%= button_to "Delete", rental_path(rental), method: :delete, class: "btn btn-danger btn-sm ml-auto" %></p>
         <p>
+          <small class="text-muted">Taken: <%= rental.until %>;</small>
+          <small class="text-muted">By: <%= rental.who %>;</small>
+          <small class="text-muted">Until: <%= rental.until || "unknown" %></small>
+        </p>
+        <p>
+          <%= button_to "Delete", rental_path(rental), method: :delete, class: "btn btn-danger btn-sm", form: { class: "inline-form-button" } %>
           <% if rental.status == "not_returned" %>
-            <%= button_to "Return", return_rental_path(rental), class: "btn btn-success btn-sm ml-auto" %>
+            <%= button_to "Return", return_rental_path(rental), class: "btn btn-success btn-sm", form: { class: "inline-form-button" } %>
           <% end %>
         </p>
       </div>

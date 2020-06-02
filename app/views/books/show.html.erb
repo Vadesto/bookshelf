@@ -17,14 +17,14 @@
     <p>
       Written by:
       <% @book.authors.each do |author| %>
-        <span><%= author.name %></span>
+        <span><%= link_to author.name, author_path(author) %>&nbsp;&nbsp;</span>
       <% end %>
     </p>
 
     <p>
       Collections:
       <% @book.collections.each do |collection| %>
-        <span><%= collection.name %></span>
+        <span><%= link_to collection.name, collection_path(collection) %>&nbsp;&nbsp;</span>
       <% end %>
     </p>
 

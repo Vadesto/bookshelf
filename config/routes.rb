@@ -7,7 +7,10 @@ Rails.application.routes.draw do
     get "(page/:page)", action: :index, on: :collection, as: ""
   end
 
-  resources :books, concerns: :paginatable
+  resources :books, concerns: :paginatable do
+    get :import_by_isbn, on: :collection
+    post :import_preview, on: :collection
+  end
 
   resources :rentals, concerns: :paginatable, except: :show do
     post :return, on: :member
