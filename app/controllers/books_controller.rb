@@ -85,6 +85,20 @@ class BooksController < ApplicationController
     if @book_data.blank?
       redirect_to import_by_isbn_books_url, flash: { error: "Sorry, we couldn't find this book" }
     end
+
+    @isbn = import_params[:isbn]
+  end
+
+  # Submiting import by ISBN
+  # POST /books/submit_import
+  def submit_import
+    book = OpenlibraryImportByIsbn.run(isbn: import_params[:isbn])
+
+    unless book.valid?
+      return redirect_to import_by_isbn_books_url, flash: { error: "Import error" }
+    end
+
+    redirect_to book.result
   end
 
   private
