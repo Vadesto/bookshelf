@@ -76,6 +76,10 @@ class BooksController < ApplicationController
       return redirect_to import_by_isbn_books_url, flash: { error: "Invalid ISBN" }
     end
 
+    if Book.exists?(isbn: import_params[:isbn])
+      return redirect_to import_by_isbn_books_url, flash: { error: "This book already exists" }
+    end
+
     @book_data = book.result
 
     if @book_data.blank?
