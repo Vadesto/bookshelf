@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class Book < ApplicationRecord
-  has_many :book_rent_history_items, dependent: :restrict_with_error
+  has_many :book_rent_history_items, dependent: :destroy
 
-  has_many :collection_books, dependent: :restrict_with_error
+  has_many :collection_books, dependent: :destroy
   has_many :collections, through: :collection_books
 
-  has_many :author_books, dependent: :restrict_with_error
+  has_many :author_books, dependent: :destroy
   has_many :authors, through: :author_books
 
   scope :without_collection, -> { left_outer_joins(:collections).where(collections: { id: nil }).order(created_at: :desc) }
