@@ -24,4 +24,8 @@ Rails.application.routes.draw do
   resources :authors do
     get "page/:page", action: :show, on: :member
   end
+
+  resources :sessions, only: [:new, :create] do
+    delete :destroy, on: :collection
+  end
 end

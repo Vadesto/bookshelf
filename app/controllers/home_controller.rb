@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class HomeController < ApplicationController
+  skip_before_action :authorize!, only: [:index]
+
   # GET /
   def index
     @last_books = Book.order(created_at: :desc).limit(11)
