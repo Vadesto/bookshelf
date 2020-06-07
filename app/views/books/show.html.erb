@@ -6,6 +6,7 @@
         <p class="card-text">ISBN: <%= @book.isbn %></p>
         <p class="card-text">Publish date: <%= @book.publish_date || "N/A" %></p>
         <p class="card-text">Status: <%= @book.status %></p>
+        <p class="card-text">Rent: <%= @book.last_book_rent_history_item&.status || "N/A" %></p>
       </div>
     </div>
     <%= link_to "Edit", edit_book_path(@book), class: "btn btn-secondary btn-lg btn-block" %>

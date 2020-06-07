@@ -2,6 +2,7 @@
 
 class Book < ApplicationRecord
   has_many :book_rent_history_items, dependent: :destroy
+  has_one :last_book_rent_history_item, -> { order(created_at: :desc) }, class_name: "BookRentHistoryItem", dependent: :destroy, inverse_of: :books
 
   has_many :collection_books, dependent: :destroy
   has_many :collections, through: :collection_books
