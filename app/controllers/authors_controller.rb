@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class AuthorsController < ApplicationController
+  skip_before_action :authorize!, only: [:show, :index]
+
   before_action :set_author, only: [:show, :edit, :update, :destroy]
 
   # GET /authors
