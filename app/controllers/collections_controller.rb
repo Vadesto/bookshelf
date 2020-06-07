@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CollectionsController < ApplicationController
+  skip_before_action :authorize!, only: [:show, :index]
+
   before_action :set_collection, only: [:show, :edit, :update, :destroy]
 
   # GET /collections

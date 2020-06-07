@@ -16,16 +16,18 @@
   <%= render partial: "/shared/link_card", locals: { link: books_path } %>
 </div>
 
-<h1>Give these books another try!</h1>
-<div class="row">
-  <% @delayed_books.each do |book| %>
-    <%= render partial: "/shared/book_card_small", locals: { book: book } %>
-  <% end %>
-</div>
+<% if logged_in? %>
+  <h1>Give these books another try!</h1>
+  <div class="row">
+    <% @delayed_books.each do |book| %>
+      <%= render partial: "/shared/book_card_small", locals: { book: book } %>
+    <% end %>
+  </div>
 
-<h1>Reading at the moment</h1>
-<div class="row">
-  <% @reading_books.each do |book| %>
-    <%= render partial: "/shared/book_card_small", locals: { book: book } %>
-  <% end %>
-</div>
+  <h1>Reading at the moment</h1>
+  <div class="row">
+    <% @reading_books.each do |book| %>
+      <%= render partial: "/shared/book_card_small", locals: { book: book } %>
+    <% end %>
+  </div>
+<% end %>

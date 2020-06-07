@@ -1,7 +1,9 @@
 <div class="row">
   <div class="col-md-12 d-flex align-items-center">
     <h1>Collections</h1>
-    <%= link_to "Create new collection", new_collection_path(@collection), class: "btn btn-success btn-sm ml-auto" %>
+    <% if logged_in? %>
+      <%= link_to "Create new collection", new_collection_path(@collection), class: "btn btn-success btn-sm ml-auto" %>
+    <% end %>
   </div>
 </div>
 
