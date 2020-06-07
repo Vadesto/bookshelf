@@ -59,7 +59,7 @@ class BooksController < ApplicationController
 
   # DELETE /books/1
   def destroy
-    @book.destroy
+    @book.destroy!
 
     redirect_to books_url, notice: "Book was successfully destroyed."
   end
@@ -76,11 +76,29 @@ class BooksController < ApplicationController
       return redirect_to import_by_isbn_books_url, flash: { error: "Invalid ISBN" }
     end
 
+    if Book.exists?(isbn: import_params[:isbn])
+      return redirect_to import_by_isbn_books_url, flash: { error: "This book already exists" }
+    end
+
     @book_data = book.result
 
     if @book_data.blank?
       redirect_to import_by_isbn_books_url, flash: { error: "Sorry, we couldn't find this book" }
     end
+
+    @isbn = import_params[:isbn]
+  end
+
+  # Submiting import by ISBN
+  # POST /books/submit_import
+  def submit_import
+    book = OpenlibraryImportByIsbn.run(isbn: import_params[:isbn])
+
+    unless book.valid?
+      return redirect_to import_by_isbn_books_url, flash: { error: "Import error" }
+    end
+
+    redirect_to book.result
   end
 
   private

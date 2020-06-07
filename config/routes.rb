@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :books, concerns: :paginatable do
     get :import_by_isbn, on: :collection
     post :import_preview, on: :collection
+    post :submit_import, on: :collection
   end
 
   resources :rentals, concerns: :paginatable, except: :show do
@@ -22,5 +23,9 @@ Rails.application.routes.draw do
 
   resources :authors do
     get "page/:page", action: :show, on: :member
+  end
+
+  resources :sessions, only: [:new, :create] do
+    delete :destroy, on: :collection
   end
 end

@@ -28,10 +28,16 @@ class OpenlibraryFindByIsbn < ActiveInteraction::Base
 
     data = data[key]
 
+    begin
+      data[:publish_date] = Date.parse(data[:publish_date])
+    rescue
+      data[:publish_date] = nil
+    end
+
     {
       title: data[:title],
       description: data[:subtitle],
-      cover: data[:cover][:large],
+      cover: data.dig(:cover, :large),
       publish_date: data[:publish_date],
       authors: data[:authors]&.map { |author| author[:name] } || []
     }
