@@ -56,6 +56,9 @@ group :development, :test do
   gem "rubocop-performance", require: false
 
   gem "dotenv-rails"
+
+  # MVC model generator
+  gem "railroady", github: "kayla-tech/railroady"
 end
 
 group :development do
