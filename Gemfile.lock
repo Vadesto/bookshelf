@@ -1,4 +1,13 @@
 GIT
+  remote: https://github.com/activerecord-hackery/ransack.git
+  revision: c9cc20de9e0f7bab92e0579c85bed64d614d23de
+  specs:
+    ransack (2.3.2)
+      activerecord (>= 5.2.1)
+      activesupport (>= 5.2.1)
+      i18n
+
+GIT
   remote: https://github.com/kayla-tech/railroady.git
   revision: 5d562045f288178b3ad3ecc33afe0e3442e4e7c0
   specs:
@@ -264,6 +273,7 @@ DEPENDENCIES
   railroady!
   rails (~> 6.0.2, >= 6.0.2.1)
   rails-erd
+  ransack!
   rubocop
   rubocop-performance
   rubocop-rails

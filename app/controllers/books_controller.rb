@@ -7,10 +7,22 @@ class BooksController < ApplicationController
 
   # GET /books
   def index
-    @books = Book
-             .all
-             .order(created_at: :desc)
-             .page(params[:page])
+    query = nil
+
+    if params[:q].present?
+      query = {
+        m: "or",
+        title_cont: params[:q],
+        isbn_eq: params[:q],
+        authors_name_cont: params[:q]
+      }
+    end
+
+    @q = Book.ransack(query)
+
+    @books = @q.result(distinct: true)
+               .order(created_at: :desc)
+               .page(params[:page])
   end
 
   # GET /books/1
