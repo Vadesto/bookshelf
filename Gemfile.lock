@@ -1,3 +1,18 @@
+GIT
+  remote: https://github.com/activerecord-hackery/ransack.git
+  revision: c9cc20de9e0f7bab92e0579c85bed64d614d23de
+  specs:
+    ransack (2.3.2)
+      activerecord (>= 5.2.1)
+      activesupport (>= 5.2.1)
+      i18n
+
+GIT
+  remote: https://github.com/kayla-tech/railroady.git
+  revision: 5d562045f288178b3ad3ecc33afe0e3442e4e7c0
+  specs:
+    railroady (1.5.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -255,8 +270,10 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
   puma (~> 4.3)
+  railroady!
   rails (~> 6.0.2, >= 6.0.2.1)
   rails-erd
+  ransack!
   rubocop
   rubocop-performance
   rubocop-rails
